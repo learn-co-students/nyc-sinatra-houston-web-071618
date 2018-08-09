@@ -1,0 +1,19 @@
+<table>
+  <th>Name</th>
+  <tr>
+      <td><%= @figure.name %>
+      <ul>
+                  Landmarks:
+        <%@figure.landmarks.each do |landmark|%>
+        <li><%=landmark.name%></li>
+        <%end%>
+      </ul>
+      <ul>
+                  Titles:
+        <%@figure.titles.each do |title|%>
+        <li><%=title.name%></li>
+        <%end%>
+      </ul>
+  </tr>
+      </td>
+</table>
