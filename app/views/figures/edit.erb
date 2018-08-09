@@ -1,23 +1,23 @@
 <h1>Update Figure</h1>
 
 <form action="/figures/<%=@figure.id%>" method="POST">
-	<input id="hidden" type="hidden" name="_method" value="patch">
-	<label>Name:</label>
-	<br></br>
+  <input type="hidden" name="_method" value="patch">
 
-	<input type="text" id="figure_name" name="figure[name]" value="<%=@figure.name%>">
+  <label>Name:</label>
+  <br></br>
 
-	<br></br>
+  <input type="text" id="figure_name" name="figure[name]" value="<%=@figure.name%>">
+
+  <br></br>
 
 
-	<label>Choose an existing title:</label>
-	<br></br>
+  <label>Choose an existing title:</label>
+  <br></br>
 
-	<%Title.all do |title|%>
-	<input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id%>" <%= 'checked' if @figure.titles.include?(title) %>>
-	<%=title.name%>
-	</input>
-	<%end%>
+  <%Title.all.each do |title|%>
+  <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>" id="<%= title.name %>" <%= 'checked' if @figure.titles.include?(title) %>>
+  <%=title.name%>
+  <%end%>
 
 
   <label>and/or, create a new title:</label>
@@ -26,16 +26,15 @@
     <input  type="text" id="new_title" name="title[name]" ></input>
   <br></br>
 
-	<!-- <input type="text" name="figure[title_ids]"> -->
+  <!-- <input type="text" name="figure[title_ids]"> -->
 
-	<label>Choose an existing landmark:</label>
-	<br></br>
-
-	<%Landmark.all do |landmark|%>
-	<input type="checkbox" name="figure[landmark_ids][] id="landmark_<%=landmark.id%>" <%= 'checked' if @figure.landmarks.include?(landmark) %>>
-	<%=landmark.name%>
-	</input>
-	<%end%>
+  <label>Choose an existing landmark:</label>
+  <br></br>
+  
+    <% Landmark.all.each do |landmark| %>
+    <label><%= landmark.name %></label>
+    <input type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>" id="<%= landmark.name %>" <%='checked' if @figure.landmarks.include?(landmark) %>>
+  <% end %>
 
 
   <label>and/or, create a new landmark:</label>
@@ -45,10 +44,7 @@
   <br></br>
 
 
-	<input type="submit" value="Edit Figure">
-
-
-
-
+  <input type="submit" value="Edit Figure">
 
 </form>
+
