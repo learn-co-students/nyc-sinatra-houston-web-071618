@@ -1,0 +1,9 @@
+<h1><%= @figure.name %></h1>
+<% @figure.landmarks.each do |lm| %>
+    <h3><%= @figure.name %>'s been to <%= lm.name %></h3>
+    <br>
+<%end%>
+<% @figure.titles.each do |title| %>
+    <h3><%= @figure.name %>'s been a <%= title.name %></h3>
+    <br>
+<%end%>
