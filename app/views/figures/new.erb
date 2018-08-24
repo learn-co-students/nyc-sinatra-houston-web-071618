@@ -1,0 +1,30 @@
+<h1>New Figure Center</h1>
+<form method="POST" action="/figures/new">
+    <input type="text" id="figure_name" name="figure[name]" placeholder="Name of Figure">
+    <br>
+    <label>What titles does this figure hold?</label>
+    <br>
+    <% @titles.each do |title| %>
+        <br>
+        <label><%=title.name%></label>
+        <input type="checkbox" id="title_<%=title.id%>" value="<%=title.id%>" name="figure[title_ids][]">
+    <% end %>
+    <br>
+    <label>Don't see the title here?</label>
+    <input type="text" name="title[name]" placeholder="New Title" id="new_title">
+    <br>
+    <br>
+    <label>What landmarks can we associate with this figure?</label>
+    <% @landmarks.each do |lm| %>
+        <br>
+        <%=lm.name%>
+        <input type="checkbox" id="landmark_<%=lm.id%>" value="<%=lm.id%>" name="figure[landmark_ids][]">
+    <% end %>
+    <br>
+    <label>Don't see the landmark here?</label>
+    <input type="text" name="landmark[name]" placeholder="New Landmark Name" id="new_landmark">
+    <input type="integer" min="1800" max="2050" step="5" id="new_landmark_year" name="landmark[year_completed]" value="2018">
+    <br>
+    <br>
+    <input type="submit" id="submit" value="Create New Figure">
+</form>

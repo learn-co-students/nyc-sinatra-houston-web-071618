@@ -1,8 +1,8 @@
 class CreateFigureTitles < ActiveRecord::Migration
   def change
-    create_join_table :figures, :titles do |t|
-      t.index :figure_id
-      t.index :title_id
+    create_table :figure_titles do |t|
+      t.belongs_to :figure
+      t.belongs_to :title
     end
   end
 end
